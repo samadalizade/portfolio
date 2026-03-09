@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samad Alizade — Journalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&family=Outfit:wght@300;400;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --green-bright: #2ecc71;
+    --green-mint: #1abc9c;
+    --peachy: #ffb574;
+    --coral-light: #ff9671;
+    --lavender: #d4a5ff;
+    --sky-blue: #87ceeb;
+    --pale-yellow: #fffacd;
+    --rose: #ffb6c1;
+    --text-dark: #2c3e50;`
+    --text-muted: #7f8c8d;
+    --border-light: #ecf0f1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: linear-gradient(180deg, var(--bg-white) 0%, #f0f8ff 50%, #fffaf0 100%);
+    color: var(--text-dark);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Animated gradient background layers */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 30%, rgba(46, 204, 113, 0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 60%, rgba(135, 206, 235, 0.06) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 80%, rgba(212, 165, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 10% 70%, rgba(255, 182, 193, 0.06) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+  }
+
+  /* HERO SECTION */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 3px solid var(--green-bright);
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(248, 249, 250, 0.85) 0%, rgba(255, 250, 240, 0.9) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 32px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(64px, 15vw, 140px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    color: var(--text-dark);
+    text-shadow: 0 10px 30px rgba(46, 204, 113, 0.15);
+    animation: heroSlideIn 1s ease both;
+  }
+
+  .hero-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--green-bright), var(--green-mint));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    animation: heroSlideIn 1s 0.2s ease both;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 48px;
+    animation: heroSlideIn 1s 0.4s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: heroSlideIn 1s 0.6s ease both;
+  }
+
+  .hero-btn {
+    padding: 14px 32px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .hero-btn-primary {
+    background: linear-gradient(135deg, var(--green-bright) 0%, var(--green-mint) 100%);
+    color: var(--bg-white);
+    border-color: var(--green-bright);
+  }
+
+  .hero-btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(46, 204, 113, 0.25);
+  }
+
+  .hero-btn-secondary {
+    background: transparent;
+    color: var(--green-bright);
+    border-color: var(--green-bright);
+  }
+
+  .hero-btn-secondary:hover {
+    background: rgba(46, 204, 113, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* MAIN CONTAINER */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 32px;
+  }
+
+  /* HEADER - CENTERED */
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 0.8s ease both;
+  }
+
+  .header-intro {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--green-bright), var(--green-mint));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  /* CARD SECTIONS - CLEAN AND SIMPLE */
+  .glass-card {
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-bottom: 2px solid var(--border-light);
+    border-radius: 0;
+    padding: 60px 0;
+    margin-bottom: 20px;
+    animation: slideUp 0.6s ease both;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    display: none;
+  }
+
+  .glass-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* LIQUID GLASS CARD */
+  .glass-card-liquid {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.05) 0%, rgba(135, 206, 235, 0.04) 50%, rgba(255, 182, 193, 0.04) 100%);
+    backdrop-filter: none;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 50px;
+    margin-bottom: 40px;
+    animation: slideUp 0.6s ease both;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card-liquid::before {
+    display: none;
+  }
+
+  .glass-card-liquid > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glass-card:nth-child(2) { animation-delay: 0.15s; }
+  .glass-card:nth-child(3) { animation-delay: 0.25s; }
+  .glass-card:nth-child(4) { animation-delay: 0.35s; }
+  .glass-card:nth-child(5) { animation-delay: 0.45s; }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--green-bright), var(--green-mint));
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+  }
+
+  /* LANGUAGES SECTION */
+  .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+  }
+
+  .lang-item {
+    background: var(--bg-white);
+    backdrop-filter: none;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lang-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-bright), var(--green-mint), var(--peachy));
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .lang-item:hover {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.08) 0%, rgba(135, 206, 235, 0.06) 100%);
+    border-color: var(--green-bright);
+    transform: translateY(-8px);
+  }
+
+  .lang-item:hover::before {
+    transform: translateX(0);
+  }
+
+  .lang-flag {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .lang-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .lang-level {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--green-bright);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* DIGITAL SKILLS SECTION */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-tag {
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .skill-tag img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: all 0.4s ease;
+  }
+
+  .skill-tag:hover img {
+    transform: scale(1.15) translateY(-4px);
+  }
+
+  .skill-tag::before {
+    display: none;
+  }
+
+  /* EXPERIENCE/ARTICLES SECTION */
+  .article-card {
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-bottom: 2px solid var(--border-light);
+    border-radius: 0;
+    padding: 24px 0;
+    margin-bottom: 0;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: visible;
+  }
+
+  .article-card::before {
+    display: none;
+  }
+
+  .article-card:hover {
+    background: transparent;
+    border-color: var(--green-bright);
+    transform: translateX(8px);
+    padding-left: 12px;
+  }
+
+  .article-card:hover::before {
+    display: none;
+  }
+
+  .article-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--green-bright);
+    min-width: 50px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .article-content {
+    flex: 1;
+  }
+
+  .article-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+  }
+
+  .article-card:hover .article-title {
+    color: var(--green-bright);
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .article-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid var(--border-light);
+    color: var(--green-bright);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  .article-tag.featured {
+    background: var(--peachy);
+    border-color: var(--coral-light);
+    color: var(--text-dark);
+  }
+
+  .article-outlet {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .article-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* CTA BOX */
+  .cta-box {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.08) 0%, rgba(135, 206, 235, 0.06) 100%);
+    backdrop-filter: none;
+    border: 2px solid var(--border-light);
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+    margin-top: 80px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    display: none;
+  }
+
+  .cta-box > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    color: var(--text-dark);
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--green-bright) 0%, var(--green-mint) 100%);
+    color: var(--bg-white);
+    padding: 16px 40px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(46, 204, 113, 0.2);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(46, 204, 113, 0.3);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 60px 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+  }
+
+  /* ANIMATIONS */
+  @keyframes heroSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* NAME LIQUID GLASS ANIMATION */
+  .name-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(135, 206, 235, 0.1), rgba(212, 165, 255, 0.12), rgba(255, 182, 193, 0.1));
+    background-size: 400% 400%;
+    backdrop-filter: blur(10px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    animation: liquidGlassFlow 8s ease infinite;
+  }
+
+  @keyframes liquidGlassFlow {
+    0% {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(135, 206, 235, 0.1), rgba(212, 165, 255, 0.12), rgba(255, 182, 193, 0.1));
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    25% {
+      background: linear-gradient(135deg, rgba(135, 206, 235, 0.15), rgba(212, 165, 255, 0.1), rgba(255, 182, 193, 0.12), rgba(46, 204, 113, 0.1));
+      box-shadow: 0 12px 40px rgba(135, 206, 235, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      background: linear-gradient(135deg, rgba(212, 165, 255, 0.15), rgba(255, 182, 193, 0.1), rgba(46, 204, 113, 0.12), rgba(135, 206, 235, 0.1));
+      box-shadow: 0 8px 32px rgba(212, 165, 255, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    75% {
+      background: linear-gradient(135deg, rgba(255, 182, 193, 0.15), rgba(46, 204, 113, 0.1), rgba(135, 206, 235, 0.12), rgba(212, 165, 255, 0.1));
+      box-shadow: 0 12px 40px rgba(255, 182, 193, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(135, 206, 235, 0.1), rgba(212, 165, 255, 0.12), rgba(255, 182, 193, 0.1));
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero {
+      height: 80vh;
+    }
+
+    .container {
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 8vw, 60px);
+    }
+
+    .glass-card,
+    .glass-card-liquid {
+      padding: 32px;
+    }
+
+    .languages-grid,
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tagline {
+      font-size: 15px;
+    }
+
+    .article-card {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .article-num {
+      display: none;
+    }
+
+    .section-label {
+      font-size: 20px;
+    }
+
+    .cta-box {
+      padding: 40px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-library/sample/ElephantsDream.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <div class="hero-subtitle">Journalist & Writer</div>
+    <div class="name-wrapper">
+      <h1>Samad Alizade</h1>
+    </div>
+    <p class="hero-tagline">Covering Central Asia and the world — politics, society, and geopolitics shaped by the post-Soviet perspective.</p>
+    
+    <div class="hero-cta">
+      <a href="mailto:alizade07samad@gmail.com" class="hero-btn hero-btn-primary">Get in Touch</a>
+      <a href="https://novastan.org/fr/author/salizade/" class="hero-btn hero-btn-secondary" target="_blank">View Articles</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <!-- LANGUAGES SECTION -->
+  <section class="glass-card">
+    <div class="section-label">Languages</div>
+    <div class="languages-grid">
+      <div class="lang-item">
+        <div class="lang-flag">🇫🇷</div>
+        <div class="lang-name">Français</div>
+        <div class="lang-level">Native</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-name">English</div>
+        <div class="lang-level">Fluent</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-flag">🇷🇺</div>
+        <div class="lang-name">Русский</div>
+        <div class="lang-level">Fluent</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-flag">🇹🇷</div>
+        <div class="lang-name">Türkçe</div>
+        <div class="lang-level">Fluent</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL SKILLS SECTION -->
+  <section class="glass-card-liquid">
+    <div class="section-label">Digital Skills</div>
+    <div class="skills-grid">
+      <div class="skill-tag">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%232ecc71' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='60' fill='white' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Affinity">
+        <div>Affinity</div>
+      </div>
+      <div class="skill-tag">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%231abc9c' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='60' fill='white' font-weight='bold'%3EC%3C/text%3E%3C/svg%3E" alt="Canva">
+        <div>Canva</div>
+      </div>
+      <div class="skill-tag">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23ffb574' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='50' fill='white' font-weight='bold'%3EPP%3C/text%3E%3C/svg%3E" alt="Premiere Pro">
+        <div>Premiere</div>
+      </div>
+      <div class="skill-tag">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23d4a5ff' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='50' fill='white' font-weight='bold'%3EMS%3C/text%3E%3C/svg%3E" alt="Office Suite">
+        <div>Office</div>
+      </div>
+      <div class="skill-tag">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%2387ceeb' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='60' fill='white' font-weight='bold'%3EW%3C/text%3E%3C/svg%3E" alt="WordPress">
+        <div>WordPress</div>
+      </div>
+      <div class="skill-tag">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23ff9671' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='40' fill='white' font-weight='bold'%3EIG%3C/text%3E%3C/svg%3E" alt="Instagram">
+        <div>Instagram</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE/ARTICLES SECTION -->
+  <section class="glass-card">
+    <div class="section-label">Featured Works</div>
+
+    <a class="article-card" href="https://novastan.org/fr/decryptage/asie-centrale-trump-sommet-que-retenir/#" target="_blank">
+      <span class="article-num">01</span>
+      <div class="article-content">
+        <div class="article-title">Le sommet entre Trump et les dirigeants d'Asie centrale : enjeux et perspectives</div>
+        <div class="article-meta">
+          <span class="article-tag featured">À la une</span>
+          <span class="article-tag">Géopolitique</span>
+          <span class="article-outlet">Novastan.org — 2025</span>
+        </div>
+        <div class="article-desc">Analyse du premier sommet diplomatique entre Donald Trump et les leaders des cinq républiques d'Asie centrale.</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="https://novastan.org/fr/kazakhstan/le-kazakhstan-interdit-a-son-tour-le-niqab-dans-lespace-public/#" target="_blank">
+      <span class="article-num">02</span>
+      <div class="article-content">
+        <div class="article-title">Le Kazakhstan interdit à son tour le voile intégral dans l'espace public</div>
+        <div class="article-meta">
+          <span class="article-tag">Société</span>
+          <span class="article-outlet">Novastan.org</span>
+        </div>
+        <div class="article-desc">Au mois de juin, les vêtements couvrant le visage sont désormais interdits dans les lieux publics au Kazakhstan.</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="https://novastan.org/fr/societe-et-culture/kazakhstan-ouzbekistan-kirghizstan-festival-cinema-heritage/#" target="_blank">
+      <span class="article-num">03</span>
+      <div class="article-content">
+        <div class="article-title">Kazakhstan, Ouzbékistan et Kirghizstan remportent des prix au festival Cinema Heritage</div>
+        <div class="article-meta">
+          <span class="article-tag">Culture</span>
+          <span class="article-outlet">Novastan.org</span>
+        </div>
+        <div class="article-desc">Festival Cinema Heritage à Paris a proposé un voyage unique dans l'histoire culturelle des pays des quatre coins du monde.</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="https://novastan.org/author/salizade" target="_blank">
+      <span class="article-num">+</span>
+      <div class="article-content">
+        <div class="article-title">View all 26 articles on Novastan.org →</div>
+        <div class="article-desc">Explore my complete portfolio and ongoing work covering Central Asia.</div>
+      </div>
+    </a>
+  </section>
+
+  <!-- MEDIA & RADIO SECTION -->
+  <section class="glass-card-liquid">
+    <div class="section-label">Other Media Work</div>
+
+    <a class="article-card" href="https://www.instagram.com/focus_lemedia/?hl=en" target="_blank">
+      <span class="article-num">📺</span>
+      <div class="article-content">
+        <div class="article-title">Focus, le Média</div>
+        <div class="article-meta">
+          <span class="article-tag featured">Video & Articles</span>
+          <span class="article-tag">Géopolitique</span>
+        </div>
+        <div class="article-desc">Producing videos and articles for teenagers and young adults on geopolitics and current affairs.</div>
+      </div>
+    </a>
+    
+    <a class="article-card" href="https://www.instagram.com/worldradioparis/?hl=en" target="_blank">
+      <span class="article-num">📻</span>
+      <div class="article-content">
+        <div class="article-title">World Radio Paris</div>
+        <div class="article-meta">
+          <span class="article-tag featured">Radio Host</span>
+          <span class="article-tag">Culture & Music</span>
+        </div>
+        <div class="article-desc">Journalist and commentator for an English-language radio station for expatriates in France and the Riviera.</div>
+      </div>
+    </a>
+
+    <a class="article-card" href="https://www.instagram.com/ugopofficiel/?hl=en" target="_blank">
+      <span class="article-num">🎙️</span>
+      <div class="article-content">
+        <div class="article-title">UGOP Radio</div>
+        <div class="article-meta">
+          <span class="article-tag featured">Radio Animator</span>
+          <span class="article-tag">Culture & Society</span>
+        </div>
+        <div class="article-desc">Hosting 6 different radio programs covering social, political and everyday issues in the arrondissement.</div>
+      </div>
+    </a>
+  </section>
+
+  <!-- CTA SECTION -->
+  <div class="cta-box">
+    <p class="cta-text">"Specialist in Central Asian affairs, geopolitics, and francophone audiences. Available for freelance assignments — articles, reportage, translation, and content creation."</p>
+    <a href="mailto:alizade07samad@gmail.com" class="cta-btn">Let's Work Together</a>
+  </div>
+
+  <footer>
+    <p>🌍 SAMAD ALIZADE © 2026 — JOURNALISM & STORYTELLING</p>
+  </footer>
+</div>
+
+</body>
+</html>
