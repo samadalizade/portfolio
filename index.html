@@ -18,7 +18,7 @@
     --sky-blue: #87ceeb;
     --pale-yellow: #fffacd;
     --rose: #ffb6c1;
-    --text-dark: #2c3e50;
+    --text-dark: #2c3e50;`
     --text-muted: #7f8c8d;
     --border-light: #ecf0f1;
   }
@@ -601,6 +601,49 @@
     }
   }
 
+  /* NAME LIQUID GLASS ANIMATION */
+  .name-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(135, 206, 235, 0.1), rgba(212, 165, 255, 0.12), rgba(255, 182, 193, 0.1));
+    background-size: 400% 400%;
+    backdrop-filter: blur(10px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    animation: liquidGlassFlow 8s ease infinite;
+  }
+
+  @keyframes liquidGlassFlow {
+    0% {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(135, 206, 235, 0.1), rgba(212, 165, 255, 0.12), rgba(255, 182, 193, 0.1));
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    25% {
+      background: linear-gradient(135deg, rgba(135, 206, 235, 0.15), rgba(212, 165, 255, 0.1), rgba(255, 182, 193, 0.12), rgba(46, 204, 113, 0.1));
+      box-shadow: 0 12px 40px rgba(135, 206, 235, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      background: linear-gradient(135deg, rgba(212, 165, 255, 0.15), rgba(255, 182, 193, 0.1), rgba(46, 204, 113, 0.12), rgba(135, 206, 235, 0.1));
+      box-shadow: 0 8px 32px rgba(212, 165, 255, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    75% {
+      background: linear-gradient(135deg, rgba(255, 182, 193, 0.15), rgba(46, 204, 113, 0.1), rgba(135, 206, 235, 0.12), rgba(212, 165, 255, 0.1));
+      box-shadow: 0 12px 40px rgba(255, 182, 193, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(135, 206, 235, 0.1), rgba(212, 165, 255, 0.12), rgba(255, 182, 193, 0.1));
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+  }
+
   /* MOBILE RESPONSIVE */
   @media (max-width: 768px) {
     .hero {
@@ -660,7 +703,9 @@
   
   <div class="hero-content">
     <div class="hero-subtitle">Journalist & Writer</div>
-    <h1>Samad Alizade</h1>
+    <div class="name-wrapper">
+      <h1>Samad Alizade</h1>
+    </div>
     <p class="hero-tagline">Covering Central Asia and the world — politics, society, and geopolitics shaped by the post-Soviet perspective.</p>
     
     <div class="hero-cta">
